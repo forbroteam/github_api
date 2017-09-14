@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.bortni.github_api.R;
+import com.bortni.github_api.model.GithubRepoModel;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
@@ -19,12 +22,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
+    public void startBottomLoading(boolean isLoading) {
+
+    }
+
+    @Override
     public boolean isActive() {
         return false;
     }
 
     @Override
-    public void showData() {
+    public void showData(List<GithubRepoModel> data, int i) {
 
     }
 
