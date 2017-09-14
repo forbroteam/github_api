@@ -116,6 +116,17 @@ public class MainActivity extends DaggerAppCompatActivity implements MainContrac
     }
 
     @Override
+    public void showLocalData(List<GithubRepoModel> githubRepoModels) {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
+        Snackbar snackbar = Snackbar.make(recyclerView, R.string.local_data_show_text, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.snackbar_dismiss, view -> snackbar.dismiss()).setActionTextColor(Color.YELLOW);
+        snackbar.show();
+        recyclerPaginationAdapter.addAllLocal(githubRepoModels);
+    }
+
+    @Override
     public void showData(List<GithubRepoModel> githubRepoModels, int _page) {
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);

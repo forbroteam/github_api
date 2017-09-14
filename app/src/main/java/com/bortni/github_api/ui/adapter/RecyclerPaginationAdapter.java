@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 public class RecyclerPaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int ITEM = 0;
     private static final int LOADING = 1;
+    private boolean isLocal = false;
 
     private List<GithubRepoModel> githubRepoModels;
 
@@ -88,6 +89,7 @@ public class RecyclerPaginationAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public void addAllFirstTime(List<GithubRepoModel> githubRepoModels) {
+        isLocal = false;
         clear();
 
         for (GithubRepoModel result : githubRepoModels) {
@@ -96,7 +98,21 @@ public class RecyclerPaginationAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public void addAll(List<GithubRepoModel> githubRepoModels) {
+        if (isLocal) {
+            isLocal = false;
+            clear();
+        }
+
         for (GithubRepoModel result : githubRepoModels) {
+            add(result);
+        }
+    }
+
+    public void addAllLocal(List<GithubRepoModel> moveResults) {
+        isLocal = true;
+        clear();
+
+        for (GithubRepoModel result : moveResults) {
             add(result);
         }
     }

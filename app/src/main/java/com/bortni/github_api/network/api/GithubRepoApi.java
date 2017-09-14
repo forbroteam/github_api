@@ -9,10 +9,10 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 /**
- * Created by andrewbortnichuk on 11/09/2017.
+ * Created by andrewbortnichuk on 14/09/2017.
  */
 
-public interface GithubApi {
+public interface GithubRepoApi {
     @GET("users/JakeWharton/repos?per_page=15")
     Observable<List<GithubRepoModel>> getRepoModel(@Query("page") int page);
 }

@@ -20,6 +20,8 @@ public interface MainContract {
 
         boolean isActive();
 
+        void showLocalData(List<GithubRepoModel> githubRepoModels);
+
         void showData(List<GithubRepoModel> data, int i);
 
         void showError(Throwable throwable);
@@ -31,5 +33,9 @@ public interface MainContract {
         void getData(int page);
 
         void getDataOnBottomList(boolean isBottom);
+
+        void isLocal(boolean isLocal);
+
+        List<GithubRepoModel> getLocalGithubRepoModels();
     }
 }

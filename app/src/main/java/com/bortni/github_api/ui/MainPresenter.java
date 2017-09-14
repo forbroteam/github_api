@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+
 /**
  * Created by andrewbortnichuk on 14/09/2017.
  */
@@ -23,6 +26,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Nullable
     private MainContract.View presenterView;
+    private boolean isLocal = false;
 
     @Inject
     public MainPresenter(GithubRepo _githubRepo) {
@@ -53,7 +57,7 @@ public class MainPresenter implements MainContract.Presenter {
         githubRepo.getGithubData(_page, new OnNetworkResponse<List<GithubRepoModel>>() {
             @Override
             public void success(@NonNull List<GithubRepoModel> githubRepoModels) {
-
+                isLocal(false);
                 if (_page > startPage) {
                     presenterView.startBottomLoading(false);
                 } else {
@@ -70,17 +74,42 @@ public class MainPresenter implements MainContract.Presenter {
 
             @Override
             public void error(@Nullable Throwable throwable) {
-                presenterView.showLoadingBar(false);
-                presenterView.showError(throwable);
+                if (_page > startPage) {
+                    presenterView.startBottomLoading(false);
+                } else {
+                    presenterView.showLoadingBar(false);
+                }
+
+                if (getLocalGithubRepoModels() != null &&
+                        getLocalGithubRepoModels().size() > 0) {
+                    isLocal(true);
+                    presenterView.showLocalData(getLocalGithubRepoModels());
+                } else {
+                    page = 0;
+                    presenterView.showError(throwable);
+                }
             }
         });
     }
 
     @Override
     public void getDataOnBottomList(boolean isBottom) {
-        if (isBottom) {
+        if (isBottom && !isLocal) {
             page++;
             getData(page);
         }
+    }
+
+    @Override
+    public void isLocal(boolean _isLocal) {
+        this.isLocal = _isLocal;
+    }
+
+    @Override
+    public List<GithubRepoModel> getLocalGithubRepoModels() {
+        if (Realm.getDefaultInstance() != null) {
+            return RealmQuery.createQuery(Realm.getDefaultInstance(),
+                    GithubRepoModel.class).findAll();
+        } else return null;
     }
 }

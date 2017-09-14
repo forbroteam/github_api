@@ -5,6 +5,7 @@ import com.bortni.github_api.network.GithubRepo;
 import com.bortni.github_api.network.OnNetworkResponse;
 import com.bortni.github_api.ui.MainContract;
 import com.bortni.github_api.ui.MainPresenter;
+import com.bortni.github_api.utils.TestUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -117,10 +118,10 @@ public class PresenterLogicUnitTest {
     }
 
     private void fillData() {
-        ModelUtils.fillGithubRepoModel();
-        data.add(ModelUtils.getGithubRepoModel());
-        data.add(ModelUtils.getGithubRepoModel());
-        data.add(ModelUtils.getGithubRepoModel());
+        TestUtils.fillGithubRepoModel();
+        data.add(TestUtils.getGithubRepoModel());
+        data.add(TestUtils.getGithubRepoModel());
+        data.add(TestUtils.getGithubRepoModel());
 
     }
 }

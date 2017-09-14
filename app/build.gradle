@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 buildscript {
     ext.support_library_version = '26.0.2'

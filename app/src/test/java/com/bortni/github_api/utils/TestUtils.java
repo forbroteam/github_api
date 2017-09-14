@@ -1,13 +1,12 @@
-package com.bortni.github_api;
-
+package com.bortni.github_api.utils;
 
 import com.bortni.github_api.model.GithubRepoModel;
 
 /**
- * Created by andrewbortnichuk on 12/09/2017.
+ * Created by andrewbortnichuk on 14/09/2017.
  */
 
-public class ModelUtils {
+public class TestUtils {
     private static GithubRepoModel githubRepoModel = new GithubRepoModel();
 
     public static GithubRepoModel getGithubRepoModel() {
