@@ -23,9 +23,13 @@ public interface MainContract {
         void showData(List<GithubRepoModel> data, int i);
 
         void showError(Throwable throwable);
+
+        void lastPage(boolean b);
     }
 
     interface Presenter extends BasePresenter<View> {
         void getData(int page);
+
+        void getDataOnBottomList(boolean isBottom);
     }
 }

@@ -40,4 +40,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void showError(Throwable throwable) {
 
     }
+
+    @Override
+    public void lastPage(boolean b) {
+
+    }
 }

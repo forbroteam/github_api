@@ -66,14 +66,6 @@ public class PresenterLogicUnitTest {
         verify(view, times(1)).showData(data, 1);
     }
 
-    private void fillData() {
-        ModelUtils.fillGithubRepoModel();
-        data.add(ModelUtils.getGithubRepoModel());
-        data.add(ModelUtils.getGithubRepoModel());
-        data.add(ModelUtils.getGithubRepoModel());
-
-    }
-
     @Test
     public void getDataForTheNextPage() {
         mainPresenter.getData(2);
@@ -91,13 +83,44 @@ public class PresenterLogicUnitTest {
         verify(view, times(1)).showData(data, 2);
     }
 
-    @Test
-    public void getDataOnTheLastPage() {
-
-    }
 
     @Test
     public void getDataOnTheScrollToBottom() {
+        mainPresenter.getDataOnBottomList(true);
+
+        verify(view, times(1)).startBottomLoading(true);
+
+        verify(githubRepo, times(1)).getGithubData(eq(2), mLoadCallbackCaptor.capture());
+
+        fillData();
+
+        mLoadCallbackCaptor.getValue().success(data);
+
+        verify(view, times(1)).startBottomLoading(false);
+        verify(view, times(1)).lastPage(false);
+
+        verify(view, times(1)).showData(data, 2);
+    }
+
+    @Test
+    public void getDataOnTheLastPage() {
+        mainPresenter.getDataOnBottomList(true);
+
+        verify(view, times(1)).startBottomLoading(true);
+
+        verify(githubRepo, times(1)).getGithubData(eq(2), mLoadCallbackCaptor.capture());
+
+        mLoadCallbackCaptor.getValue().success(new ArrayList<>());
+
+        verify(view, times(1)).startBottomLoading(false);
+        verify(view, times(1)).lastPage(true);
+    }
+
+    private void fillData() {
+        ModelUtils.fillGithubRepoModel();
+        data.add(ModelUtils.getGithubRepoModel());
+        data.add(ModelUtils.getGithubRepoModel());
+        data.add(ModelUtils.getGithubRepoModel());
 
     }
 }

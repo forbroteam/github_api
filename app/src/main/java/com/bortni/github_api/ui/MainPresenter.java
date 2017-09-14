@@ -58,7 +58,10 @@ public class MainPresenter implements MainContract.Presenter {
                 }
 
                 if (githubRepoModels.size() > 0) {
+                    presenterView.lastPage(false);
                     presenterView.showData(githubRepoModels, _page);
+                } else {
+                    presenterView.lastPage(true);
                 }
             }
 
@@ -68,5 +71,13 @@ public class MainPresenter implements MainContract.Presenter {
                 presenterView.showError(throwable);
             }
         });
+    }
+
+    @Override
+    public void getDataOnBottomList(boolean isBottom) {
+        if (isBottom) {
+            page++;
+            getData(page);
+        }
     }
 }
