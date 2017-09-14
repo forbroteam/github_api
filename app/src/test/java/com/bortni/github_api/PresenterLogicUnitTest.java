@@ -1,7 +1,11 @@
 package com.bortni.github_api;
 
+import com.bortni.github_api.ui.MainContract;
+import com.bortni.github_api.ui.MainPresenter;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 /**
@@ -10,9 +14,16 @@ import org.mockito.MockitoAnnotations;
 
 public class PresenterLogicUnitTest {
 
+    @Mock
+    MainContract.View view;
+
+    private MainPresenter mainPresenter;
+
     @Before
     public void setupPresenter() {
         MockitoAnnotations.initMocks(this);
+        mainPresenter = new MainPresenter();
+        mainPresenter.takeView(view);
     }
 
     @Test
