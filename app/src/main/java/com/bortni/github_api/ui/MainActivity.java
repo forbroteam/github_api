@@ -3,7 +3,9 @@ package com.bortni.github_api.ui;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.Snackbar;
+import android.support.test.espresso.IdlingResource;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import com.bortni.github_api.R;
 import com.bortni.github_api.model.GithubRepoModel;
 import com.bortni.github_api.ui.adapter.RecyclerPaginationAdapter;
 import com.bortni.github_api.ui.listener.PaginationScrollListener;
+import com.bortni.github_api.utils.EspressoIdlingResource;
 
 import java.util.List;
 
@@ -25,11 +28,11 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
     private static final String TAG = "TAG_MAIN";
-
+    @BindView(R.id.recycler_view)
+    public
+    RecyclerView recyclerView;
     @Inject
     MainPresenter mainPresenter;
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -149,5 +152,12 @@ public class MainActivity extends DaggerAppCompatActivity implements MainContrac
     @Override
     public void lastPage(boolean _isLastPage) {
         this.isLastPage = _isLastPage;
+    }
+
+
+    //purpose to make visible for Instrumentation testing
+    @VisibleForTesting
+    public IdlingResource getCountingIdlingResource() {
+        return EspressoIdlingResource.getIdlingResource();
     }
 }

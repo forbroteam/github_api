@@ -2,7 +2,7 @@ package com.bortni.github_api.di.modules;
 
 import android.app.Application;
 
-import com.bortni.github_api.network.GithubRepo;
+import com.bortni.github_api.network.repo.GithubRepo;
 
 import javax.inject.Singleton;
 

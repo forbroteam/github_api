@@ -1,11 +1,9 @@
 package com.bortni.github_api;
 
 
-import android.util.Log;
-
 import com.bortni.github_api.di.AppComponent;
 import com.bortni.github_api.di.DaggerAppComponent;
-import com.bortni.github_api.network.GithubRepo;
+import com.bortni.github_api.network.repo.GithubRepo;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.bortni.github_api.network;
+package com.bortni.github_api.network.repo;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

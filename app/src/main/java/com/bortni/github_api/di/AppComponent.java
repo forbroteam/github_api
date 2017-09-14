@@ -6,7 +6,7 @@ import com.bortni.github_api.BaseApplication;
 import com.bortni.github_api.di.modules.ActivityModule;
 import com.bortni.github_api.di.modules.ApplicationModule;
 import com.bortni.github_api.di.modules.NetworkModule;
-import com.bortni.github_api.network.GithubRepo;
+import com.bortni.github_api.network.repo.GithubRepo;
 
 import javax.inject.Singleton;
 

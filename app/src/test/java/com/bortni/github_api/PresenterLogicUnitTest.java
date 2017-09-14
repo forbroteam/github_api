@@ -1,8 +1,8 @@
 package com.bortni.github_api;
 
 import com.bortni.github_api.model.GithubRepoModel;
-import com.bortni.github_api.network.GithubRepo;
-import com.bortni.github_api.network.OnNetworkResponse;
+import com.bortni.github_api.network.repo.GithubRepo;
+import com.bortni.github_api.network.repo.OnNetworkResponse;
 import com.bortni.github_api.ui.MainContract;
 import com.bortni.github_api.ui.MainPresenter;
 import com.bortni.github_api.utils.TestUtils;

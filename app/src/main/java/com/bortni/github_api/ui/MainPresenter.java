@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.bortni.github_api.model.GithubRepoModel;
-import com.bortni.github_api.network.GithubRepo;
-import com.bortni.github_api.network.OnNetworkResponse;
+import com.bortni.github_api.network.repo.GithubRepo;
+import com.bortni.github_api.network.repo.OnNetworkResponse;
 
 import java.util.List;
 

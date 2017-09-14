@@ -72,4 +72,12 @@ dependencies {
     //View binging
     compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
+
+
+    //Android Instrumentation test
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
+
+    androidTestCompile "com.android.support.test.espresso.idling:idling-concurrent:3.0.1"
+    compile "com.android.support.test.espresso:espresso-idling-resource:3.0.1"
 }
