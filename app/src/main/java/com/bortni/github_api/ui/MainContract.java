@@ -1,8 +1,8 @@
 package com.bortni.github_api.ui;
 
 
-import com.bortni.BasePresenter;
-import com.bortni.BaseView;
+import com.bortni.github_api.BasePresenter;
+import com.bortni.github_api.BaseView;
 import com.bortni.github_api.model.GithubRepoModel;
 
 import java.util.List;

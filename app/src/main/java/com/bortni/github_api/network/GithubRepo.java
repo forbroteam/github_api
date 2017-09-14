@@ -7,13 +7,15 @@ import com.bortni.github_api.network.api.GithubApi;
 
 import java.util.List;
 
+import javax.inject.Singleton;
+
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
  * Created by andrewbortnichuk on 14/09/2017.
  */
-
+@Singleton
 public class GithubRepo {
     private final Context context;
 

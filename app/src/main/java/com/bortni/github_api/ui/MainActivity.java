@@ -1,19 +1,29 @@
 package com.bortni.github_api.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.bortni.github_api.R;
 import com.bortni.github_api.model.GithubRepoModel;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
+import javax.inject.Inject;
+
+import dagger.android.support.DaggerAppCompatActivity;
+
+public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
+    private static final String TAG = "TAG_MAIN";
+
+    @Inject
+    MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d(TAG, mainPresenter.toString());
     }
 
     @Override

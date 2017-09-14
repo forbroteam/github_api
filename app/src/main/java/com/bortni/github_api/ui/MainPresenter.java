@@ -9,6 +9,8 @@ import com.bortni.github_api.network.OnNetworkResponse;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by andrewbortnichuk on 14/09/2017.
  */
@@ -22,6 +24,7 @@ public class MainPresenter implements MainContract.Presenter {
     @Nullable
     private MainContract.View presenterView;
 
+    @Inject
     public MainPresenter(GithubRepo _githubRepo) {
         this.githubRepo = _githubRepo;
     }
