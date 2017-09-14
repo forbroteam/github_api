@@ -11,6 +11,8 @@ buildscript {
     ext.rxandroid_version = '1.2.1'
 
     ext.dagger_version = '2.11'
+
+    ext.BUTTER_KNIFE_VERSION = "8.5.1"
 }
 
 android {
@@ -65,4 +67,8 @@ dependencies {
     compile "com.google.dagger:dagger-android-support:$dagger_version"
     compile 'com.google.code.gson:gson:2.8.0'
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    //View binging
+    compile "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
 }

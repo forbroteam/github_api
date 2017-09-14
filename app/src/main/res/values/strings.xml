@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jake Repositories</string>
+    <string name="error_text">Please try again, error -</string>
+    <string name="retry_snackbar">Retry</string>
 </resources>
